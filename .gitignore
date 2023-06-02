@@ -1,0 +1,13 @@
+Thumbs.db
+.DS_Store
+.buildpath
+.project
+.settings
+.tmpoj
+.idea
+.vscode
+googlechat
+basedir
+
+output
+bind_darwin_amd64.go

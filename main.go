@@ -60,6 +60,7 @@ func main() {
 					{Label: astikit.StrPtr("Minimize"), Role: astilectron.MenuItemRoleMinimize},
 					{Accelerator: astilectron.NewAccelerator("Command", "Q"), Label: astikit.StrPtr("Close"), Role: astilectron.MenuItemRoleClose},
 					{Accelerator: astilectron.NewAccelerator("Command", "R"), Label: astikit.StrPtr("Reload"), Role: astilectron.MenuItemRoleReload},
+					{Accelerator: astilectron.NewAccelerator("F12"), Label: astikit.StrPtr("DevTool"), Role: astilectron.MenuItemRoleToggleDevTools},
 					{Label: astikit.StrPtr("About"), Role: astilectron.MenuItemRoleAbout},
 				},
 			},
@@ -84,6 +85,9 @@ func main() {
 		},
 
 		OnWait: func(a *astilectron.Astilectron, ws []*astilectron.Window, _ *astilectron.Menu, t *astilectron.Tray, _ *astilectron.Menu) error {
+			// Get the dock
+			var d = a.Dock()
+
 			basePaht := a.Paths().BaseDirectory()
 
 			ws[0].OnMessage(func(m *astilectron.EventMessage) interface{} {
@@ -93,26 +97,46 @@ func main() {
 
 				switch count {
 				case 0:
+					d.SetBadge("0")
 					t.SetImage(basePaht + "/resources/icon200.png")
 				case 1:
+					d.SetBadge("1")
+					d.Bounce(astilectron.DockBounceTypeInformational)
 					t.SetImage(basePaht + "/resources/icon201.png")
 				case 2:
+					d.SetBadge("2")
+					d.Bounce(astilectron.DockBounceTypeInformational)
 					t.SetImage(basePaht + "/resources/icon202.png")
 				case 3:
+					d.SetBadge("3")
+					d.Bounce(astilectron.DockBounceTypeInformational)
 					t.SetImage(basePaht + "/resources/icon203.png")
 				case 4:
+					d.SetBadge("4")
+					d.Bounce(astilectron.DockBounceTypeInformational)
 					t.SetImage(basePaht + "/resources/icon204.png")
 				case 5:
+					d.SetBadge("5")
+					d.Bounce(astilectron.DockBounceTypeInformational)
 					t.SetImage(basePaht + "/resources/icon205.png")
 				case 6:
+					d.SetBadge("6")
+					d.Bounce(astilectron.DockBounceTypeInformational)
 					t.SetImage(basePaht + "/resources/icon206.png")
 				case 7:
+					d.SetBadge("7")
+					d.Bounce(astilectron.DockBounceTypeInformational)
 					t.SetImage(basePaht + "/resources/icon207.png")
 				case 8:
+					d.SetBadge("8")
+					d.Bounce(astilectron.DockBounceTypeInformational)
 					t.SetImage(basePaht + "/resources/icon208.png")
 				case 9:
+					d.SetBadge("9")
+					d.Bounce(astilectron.DockBounceTypeInformational)
 					t.SetImage(basePaht + "/resources/icon209.png")
 				default:
+					d.SetBadge("...")
 					t.SetImage(basePaht + "/resources/icon20o.png")
 
 				}

@@ -1,4 +1,4 @@
-### Google Chat App
+### Google Chat Desktop
 
 ---
 

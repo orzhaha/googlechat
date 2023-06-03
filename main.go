@@ -59,6 +59,8 @@ func main() {
 				SubMenu: []*astilectron.MenuItemOptions{
 					{Label: astikit.StrPtr("About"), Role: astilectron.MenuItemRoleAbout},
 					{Type: astilectron.MenuItemTypeSeparator},
+					{Checked: astikit.BoolPtr(true), Label: astikit.StrPtr("Bounce"), Type: astilectron.MenuItemTypeCheckbox},
+					{Type: astilectron.MenuItemTypeSeparator},
 					{Accelerator: astilectron.NewAccelerator("Command", "Q"), Label: astikit.StrPtr("Close"), Role: astilectron.MenuItemRoleClose},
 					{Type: astilectron.MenuItemTypeSeparator},
 				},
@@ -127,7 +129,20 @@ func main() {
 			},
 		},
 
-		OnWait: func(a *astilectron.Astilectron, ws []*astilectron.Window, _ *astilectron.Menu, t *astilectron.Tray, _ *astilectron.Menu) error {
+		OnWait: func(a *astilectron.Astilectron, ws []*astilectron.Window, m *astilectron.Menu, t *astilectron.Tray, _ *astilectron.Menu) error {
+			BounceMi, _ := m.Item(0, 2)
+			BounceEnable := true
+
+			BounceMi.On(astilectron.EventNameMenuItemEventClicked, func(e astilectron.Event) bool {
+				if *e.MenuItemOptions.Checked {
+					BounceEnable = true
+				} else {
+					BounceEnable = false
+				}
+
+				return false
+			})
+
 			// Get the dock
 			var d = a.Dock()
 
@@ -144,42 +159,63 @@ func main() {
 					t.SetImage(basePaht + "/resources/icon200.png")
 				case 1:
 					d.SetBadge("1")
-					d.Bounce(astilectron.DockBounceTypeInformational)
+					if BounceEnable {
+						d.Bounce(astilectron.DockBounceTypeInformational)
+					}
 					t.SetImage(basePaht + "/resources/icon201.png")
 				case 2:
 					d.SetBadge("2")
-					d.Bounce(astilectron.DockBounceTypeInformational)
+					if BounceEnable {
+						d.Bounce(astilectron.DockBounceTypeInformational)
+					}
 					t.SetImage(basePaht + "/resources/icon202.png")
 				case 3:
 					d.SetBadge("3")
-					d.Bounce(astilectron.DockBounceTypeInformational)
+					if BounceEnable {
+						d.Bounce(astilectron.DockBounceTypeInformational)
+					}
 					t.SetImage(basePaht + "/resources/icon203.png")
 				case 4:
 					d.SetBadge("4")
-					d.Bounce(astilectron.DockBounceTypeInformational)
+					if BounceEnable {
+						d.Bounce(astilectron.DockBounceTypeInformational)
+					}
 					t.SetImage(basePaht + "/resources/icon204.png")
 				case 5:
 					d.SetBadge("5")
-					d.Bounce(astilectron.DockBounceTypeInformational)
+					if BounceEnable {
+						d.Bounce(astilectron.DockBounceTypeInformational)
+					}
 					t.SetImage(basePaht + "/resources/icon205.png")
 				case 6:
 					d.SetBadge("6")
-					d.Bounce(astilectron.DockBounceTypeInformational)
+					if BounceEnable {
+						d.Bounce(astilectron.DockBounceTypeInformational)
+					}
 					t.SetImage(basePaht + "/resources/icon206.png")
 				case 7:
 					d.SetBadge("7")
-					d.Bounce(astilectron.DockBounceTypeInformational)
+					if BounceEnable {
+						d.Bounce(astilectron.DockBounceTypeInformational)
+					}
 					t.SetImage(basePaht + "/resources/icon207.png")
 				case 8:
 					d.SetBadge("8")
-					d.Bounce(astilectron.DockBounceTypeInformational)
+					if BounceEnable {
+						d.Bounce(astilectron.DockBounceTypeInformational)
+					}
 					t.SetImage(basePaht + "/resources/icon208.png")
 				case 9:
 					d.SetBadge("9")
-					d.Bounce(astilectron.DockBounceTypeInformational)
+					if BounceEnable {
+						d.Bounce(astilectron.DockBounceTypeInformational)
+					}
 					t.SetImage(basePaht + "/resources/icon209.png")
 				default:
 					d.SetBadge("...")
+					if BounceEnable {
+						d.Bounce(astilectron.DockBounceTypeInformational)
+					}
 					t.SetImage(basePaht + "/resources/icon20o.png")
 
 				}

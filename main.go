@@ -98,7 +98,7 @@ func main() {
 				},
 			},
 			{
-				Label: astikit.StrPtr("Windows"),
+				Label: astikit.StrPtr("Window"),
 				SubMenu: []*astilectron.MenuItemOptions{
 					{Type: astilectron.MenuItemTypeSeparator},
 				},

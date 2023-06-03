@@ -3,12 +3,9 @@ package main
 import (
 	"fmt"
 	"log"
-	// "time"
 
 	astikit "github.com/asticode/go-astikit"
 	astilectron "github.com/asticode/go-astilectron"
-
-	"github.com/getlantern/systray"
 )
 
 var (
@@ -47,7 +44,7 @@ func main() {
 		l.Fatal(fmt.Errorf("main: starting astilectron failed: %w", err))
 	}
 
-	// // Init a new app menu
+	// Init a new app menu
 	var m = a.NewMenu([]*astilectron.MenuItemOptions{
 		{
 			Label: astikit.StrPtr("Chat"),
@@ -79,12 +76,57 @@ func main() {
 		l.Fatal(fmt.Errorf("main: creating window failed: %w", err))
 	}
 
+	var t = a.NewTray(&astilectron.TrayOptions{
+		Image:   astikit.StrPtr("resources/icon.png"),
+		Tooltip: astikit.StrPtr("tooltip"),
+	})
+
+	// Create tray
+	t.Create()
+
+	t.On(astilectron.EventNameTrayEventClicked, func(e astilectron.Event) (deleteListener bool) {
+		// err = w.Focus()
+		// if err != nil {
+		// 	fmt.Println("err###############", err)
+		// }
+		// err = w.Show()
+		// if err != nil {
+		// 	fmt.Println("err###############", err)
+		// }
+		// fmt.Println("Tray item clicked")
+		return
+	})
+
 	w.OnMessage(func(m *astilectron.EventMessage) interface{} {
 		// Unmarshal
 		var count int
 		m.Unmarshal(&count)
 
-		systray.SetTitle(fmt.Sprintf("未讀訊息數:%d", count))
+		switch count {
+		case 0:
+			t.SetImage("resources/icon200.png")
+		case 1:
+			t.SetImage("resources/icon201.png")
+		case 2:
+			t.SetImage("resources/icon202.png")
+		case 3:
+			t.SetImage("resources/icon203.png")
+		case 4:
+			t.SetImage("resources/icon204.png")
+		case 5:
+			t.SetImage("resources/icon205.png")
+		case 6:
+			t.SetImage("resources/icon206.png")
+		case 7:
+			t.SetImage("resources/icon207.png")
+		case 8:
+			t.SetImage("resources/icon208.png")
+		case 9:
+			t.SetImage("resources/icon209.png")
+		default:
+			t.SetImage("resources/icon20o.png")
+
+		}
 
 		return nil
 	})
@@ -127,33 +169,5 @@ func main() {
 		    computeCount();
 		`)
 
-	go func() {
-		a.Wait()
-		systray.Quit()
-	}()
-
-	systray.Run(onReady, onExit)
-
 	a.Wait()
-
-}
-
-func onReady() {
-	// mIcon := systray.AddMenuItem(" ", "")
-	// mQuit := systray.AddMenuItem("Quit", "Quit the application")
-	// 監聽菜單項目的點擊事件，當點擊時向 clickCh 通道發送信號
-	go func() {
-		// for {
-		// 	<-mIcon.ClickedCh
-		// 	fmt.Println("###")
-		// 	<-mQuit.ClickedCh
-		// 	fmt.Println("###@")
-		// }
-	}()
-	systray.SetTitle(fmt.Sprintf("未讀訊息數:%d", 0))
-	// systray.SetTooltip("Pretty awesome超级棒")
-}
-
-func onExit() {
-	// clean up here
 }

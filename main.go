@@ -57,11 +57,54 @@ func main() {
 			{
 				Label: astikit.StrPtr("Chat"),
 				SubMenu: []*astilectron.MenuItemOptions{
-					{Label: astikit.StrPtr("Minimize"), Role: astilectron.MenuItemRoleMinimize},
-					{Accelerator: astilectron.NewAccelerator("Command", "Q"), Label: astikit.StrPtr("Close"), Role: astilectron.MenuItemRoleClose},
-					{Accelerator: astilectron.NewAccelerator("Command", "R"), Label: astikit.StrPtr("Reload"), Role: astilectron.MenuItemRoleReload},
-					{Accelerator: astilectron.NewAccelerator("F12"), Label: astikit.StrPtr("DevTool"), Role: astilectron.MenuItemRoleToggleDevTools},
 					{Label: astikit.StrPtr("About"), Role: astilectron.MenuItemRoleAbout},
+					{Type: astilectron.MenuItemTypeSeparator},
+					{Accelerator: astilectron.NewAccelerator("Command", "Q"), Label: astikit.StrPtr("Close"), Role: astilectron.MenuItemRoleClose},
+					{Type: astilectron.MenuItemTypeSeparator},
+				},
+			},
+			{
+				Label: astikit.StrPtr("File"),
+				SubMenu: []*astilectron.MenuItemOptions{
+					{Type: astilectron.MenuItemTypeSeparator},
+				},
+			},
+			{
+				Label: astikit.StrPtr("Edit"),
+				SubMenu: []*astilectron.MenuItemOptions{
+					{Accelerator: astilectron.NewAccelerator("Command", "Z"), Label: astikit.StrPtr("Undo"), Role: astilectron.MenuItemRoleUndo},
+					{Label: astikit.StrPtr("Redo"), Role: astilectron.MenuItemRoleRedo},
+					{Type: astilectron.MenuItemTypeSeparator},
+					{Accelerator: astilectron.NewAccelerator("Command", "X"), Label: astikit.StrPtr("Cut"), Role: astilectron.MenuItemRoleCut},
+					{Accelerator: astilectron.NewAccelerator("Command", "C"), Label: astikit.StrPtr("Copy"), Role: astilectron.MenuItemRoleCopy},
+					{Accelerator: astilectron.NewAccelerator("Command", "V"), Label: astikit.StrPtr("Paste"), Role: astilectron.MenuItemRolePaste},
+					{Label: astikit.StrPtr("PasteAndMatchStyle"), Role: astilectron.MenuItemRolePasteAndMatchStyle},
+					{Accelerator: astilectron.NewAccelerator("Command", "A"), Label: astikit.StrPtr("SelectAll"), Role: astilectron.MenuItemRoleSelectAll},
+				},
+			},
+			{
+				Label: astikit.StrPtr("View"),
+				SubMenu: []*astilectron.MenuItemOptions{
+					{Accelerator: astilectron.NewAccelerator("Command", "R"), Label: astikit.StrPtr("Reload"), Role: astilectron.MenuItemRoleReload},
+					{Type: astilectron.MenuItemTypeSeparator},
+					{Label: astikit.StrPtr("Minimize"), Role: astilectron.MenuItemRoleMinimize},
+					{Label: astikit.StrPtr("Resetzoom"), Role: astilectron.MenuItemRoleResetZoom},
+					{Label: astikit.StrPtr("ZoomOut"), Role: astilectron.MenuItemRoleZoomOut},
+					{Label: astikit.StrPtr("ZoomIn"), Role: astilectron.MenuItemRoleZoomIn},
+					{Type: astilectron.MenuItemTypeSeparator},
+					{Accelerator: astilectron.NewAccelerator("F12"), Label: astikit.StrPtr("DevTool"), Role: astilectron.MenuItemRoleToggleDevTools},
+				},
+			},
+			{
+				Label: astikit.StrPtr("Windows"),
+				SubMenu: []*astilectron.MenuItemOptions{
+					{Type: astilectron.MenuItemTypeSeparator},
+				},
+			},
+			{
+				Label: astikit.StrPtr("Help"),
+				SubMenu: []*astilectron.MenuItemOptions{
+					{Type: astilectron.MenuItemTypeSeparator},
 				},
 			},
 		},

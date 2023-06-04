@@ -6,14 +6,10 @@ import (
 	"log"
 	"os"
 
-	"github.com/asticode/go-astikit"
-	"github.com/asticode/go-astilectron"
+	astikit "github.com/asticode/go-astikit"
+	astilectron "github.com/asticode/go-astilectron"
 	bootstrap "github.com/asticode/go-astilectron-bootstrap"
 )
-
-// Constants
-const htmlAbout = `Welcome on <b>Astilectron</b> demo!<br>
-This is using the bootstrap and the bundler.`
 
 // Vars injected via ldflags by bundler
 var (
@@ -148,6 +144,12 @@ func main() {
 
 			basePaht := a.Paths().BaseDirectory()
 
+			// 畫面reload實在載入一次
+			ws[0].On(astilectron.EventNameWindowEventReadyToShow, func(e astilectron.Event) (deleteListener bool) {
+				ws[0].ExecuteJavaScript(executeJavaScript)
+				return
+			})
+
 			ws[0].OnMessage(func(m *astilectron.EventMessage) interface{} {
 				// Unmarshal
 				var count int
@@ -223,39 +225,7 @@ func main() {
 				return nil
 			})
 
-			ws[0].ExecuteJavaScript(`
-          // This will send a message to GO
-          astilectron.sendMessage("hello", function(message) {
-              console.log("received " + message)
-          });
-
-          const aktDoms = document.getElementsByClassName('akt');
-          let count = 0;
-
-          function computeCount() {
-            count = 0;
-
-            for (let i = 0; i < aktDoms.length; i++) {
-              const span = aktDoms[i].getElementsByTagName('span')[0];
-
-              count += Number(span.textContent);
-            }
-
-            const link = document.createElement('A');
-
-              astilectron.sendMessage(count, function() {
-
-              });
-          }
-
-          for (let i = 0; i < aktDoms.length; i++) {
-            aktDoms[i].addEventListener('DOMSubtreeModified', () => {
-              computeCount();
-            });
-          }
-
-          computeCount();
-      `)
+			ws[0].ExecuteJavaScript(executeJavaScript)
 
 			t.On(astilectron.EventNameTrayEventClicked, func(e astilectron.Event) (deleteListener bool) {
 

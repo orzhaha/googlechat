@@ -1,24 +1,30 @@
 ### Google Chat Desktop
 
+[![latest-tag](https://badgen.net/github/release/orzhaha/googlechat)](https://github.com/orzhaha/googlechat/releases)
+[![downloads](https://img.shields.io/github/downloads/orzhaha/googlechat/total?cacheSeconds=3600)](https://somsubhra.github.io/github-release-stats/?username=orzhaha&repository=googlechat&page=1&per_page=30)
+
+An unofficial desktop app for [Google Chat](http://chat.google.com)
+
 ---
 
-### 功能
-* 增加未讀訊息狀態欄
-* 跳動Dock
+### Features
 
-### 如何編譯
+* system tray unread message indicator
+* bounce dock
 
-安裝編譯軟體
+### Bundler
+
+installation bundler
 ```sh
 go get -u github.com/asticode/go-astilectron-bundler/...
 
 go install github.com/asticode/go-astilectron-bundler/astilectron-bundler
 ```
 
-執行編譯
+usage bundler
 ```
 astilectron-bundler -c bundler.json
 ```
 
-### 如何安裝
+### Installation
 

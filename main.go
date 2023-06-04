@@ -40,7 +40,7 @@ func main() {
 		Asset:    Asset,
 		AssetDir: AssetDir,
 		AstilectronOptions: astilectron.Options{
-			AppName:            "Chat",
+			AppName:            "Google Chat",
 			AppIconDarwinPath:  "resources/icon.icns",
 			AppIconDefaultPath: "resources/icon.png",
 			SingleInstance:     true,
@@ -51,7 +51,7 @@ func main() {
 		Logger: l,
 		MenuOptions: []*astilectron.MenuItemOptions{
 			{
-				Label: astikit.StrPtr("Chat"),
+				Label: astikit.StrPtr("Google Chat"),
 				SubMenu: []*astilectron.MenuItemOptions{
 					{Label: astikit.StrPtr("About"), Role: astilectron.MenuItemRoleAbout},
 					{Type: astilectron.MenuItemTypeSeparator},

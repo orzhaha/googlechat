@@ -228,6 +228,7 @@ func main() {
 			ws[0].ExecuteJavaScript(executeJavaScript)
 
 			t.On(astilectron.EventNameTrayEventClicked, func(e astilectron.Event) (deleteListener bool) {
+				ws[0].Show()
 
 				return
 			})

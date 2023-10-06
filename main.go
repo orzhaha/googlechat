@@ -110,7 +110,7 @@ func main() {
 		RestoreAssets: RestoreAssets,
 		TrayOptions: &astilectron.TrayOptions{
 			Image:   astikit.StrPtr("resources/icon200.png"),
-			Tooltip: astikit.StrPtr("tooltip"),
+			Tooltip: astikit.StrPtr("Google Chat Desktop"),
 		},
 		Windows: []*bootstrap.Window{
 			{

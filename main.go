@@ -106,7 +106,6 @@ func main() {
 				},
 			},
 		},
-
 		RestoreAssets: RestoreAssets,
 		TrayOptions: &astilectron.TrayOptions{
 			Image:   astikit.StrPtr("resources/icon200.png"),
@@ -147,6 +146,7 @@ func main() {
 			// 畫面reload實在載入一次
 			ws[0].On(astilectron.EventNameWindowEventReadyToShow, func(e astilectron.Event) (deleteListener bool) {
 				ws[0].ExecuteJavaScript(executeJavaScript)
+				ws[0].Session.LoadExtension(basePaht + "/resources/chrome-extension")
 				return
 			})
 
@@ -226,6 +226,7 @@ func main() {
 			})
 
 			ws[0].ExecuteJavaScript(executeJavaScript)
+			ws[0].Session.LoadExtension(basePaht + "/resources/chrome-extension")
 
 			t.On(astilectron.EventNameTrayEventClicked, func(e astilectron.Event) (deleteListener bool) {
 				ws[0].Show()

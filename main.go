@@ -157,7 +157,7 @@ func main() {
 
 				switch count {
 				case 0:
-					d.SetBadge("0")
+					d.SetBadge("")
 					t.SetImage(basePaht + "/resources/icon200.png")
 				case 1:
 					d.SetBadge("1")

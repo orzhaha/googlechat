@@ -4,7 +4,7 @@ go 1.20
 
 require (
 	github.com/asticode/go-astikit v0.40.0
-	github.com/asticode/go-astilectron v0.30.0
+	github.com/asticode/go-astilectron v0.30.1-0.20231018071045-1082851c1ea2
 	github.com/asticode/go-astilectron-bootstrap v0.4.14
 	github.com/getlantern/systray v1.2.2
 )

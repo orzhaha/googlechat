@@ -33,3 +33,4 @@ Select the system installation file on the release page.
 
 [releases](https://github.com/orzhaha/googlechat/releases)
 
+![image](https://github.com/orzhaha/googlechat/assets/1741016/a59a4cff-8d75-4c16-bff0-f903a770120a)
